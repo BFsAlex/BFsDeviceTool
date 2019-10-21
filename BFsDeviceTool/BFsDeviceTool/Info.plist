@@ -26,6 +26,12 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>获取定位权限</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>需要获取定位权限2</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>获取定位权限3</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

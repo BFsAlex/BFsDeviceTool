@@ -9,8 +9,12 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "BFsDeviceTool.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController ()
+
+@interface ViewController (){
+    CLLocationManager *_locManager;
+}
 @property (nonatomic, weak) UIButton *orientationBtn;
 
 @end
@@ -21,7 +25,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configSubviews];
-    [self registerOrientationStatusNotification];
+//    [self registerOrientationStatusNotification];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    if ([self requireLocationAuthor]) {
+        NSLog(@"已获取定位授权");
+    } else {
+        NSLog(@"未获取定位授权");
+    }
+//    _locManager = [[CLLocationManager alloc] init];
+//    [_locManager requestAlwaysAuthorization];
 }
 
 - (void)configSubviews {
@@ -34,6 +49,18 @@
     [orientationBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [orientationBtn addTarget:self action:@selector(actionOrientationBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.orientationBtn = orientationBtn;
+}
+
+#pragma mark 设备版本
+
+- (BOOL)requireLocationAuthor {
+    
+//    if ([BFsDeviceTool lowerThanVersionNum:13.f]) {
+//        return true;
+//    }
+    
+    
+    return [BFsDeviceTool requireLocationAuthor];
 }
 
 /*
